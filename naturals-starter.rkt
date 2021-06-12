@@ -14,3 +14,17 @@
         [else
          (+ n
             (sum (sub1 n)))]))
+
+;; Natural -> ListOfNatural
+;; produce (cons n-1 ... '()), not including 0
+(check-expect (to-list 0) '())
+(check-expect (to-list 1) (cons 1 '()))
+(check-expect (to-list 3) (cons 3 (cons 2 (cons 1 '()))))
+
+;(define (to-list n) '()) ;stub
+
+(define (to-list n)
+  (cond [(zero? n) '()]
+        [else
+         (cons n
+               (to-list (sub1 n)))]))
