@@ -39,5 +39,18 @@
 
 (define (ADD a b)
   (cond [(ZERO? b) a]
-        [else      
+        [else
          (ADD (ADD1 a) (SUB1 b))]))
+
+;; NATURAL NATURAL -> NATURAL
+;; produce a - b, where a >= b
+(check-expect (SUB N2 N0) N2)
+(check-expect (SUB N3 N2) N1)
+(check-expect (SUB N9 N2) N7)
+
+;(define (SUB a b) N0) ;stub
+
+(define (SUB a b)
+  (cond [(ZERO? b) a]
+        [else
+         (SUB (SUB1 a) (SUB1 b))]))
